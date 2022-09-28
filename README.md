@@ -18,6 +18,12 @@ This Repository contains the details and steps to install Airflow easily using d
 4. [For Linux] Make sure at the File Sharing option you add the directory where you have docker-compose.yaml file stored.
     ![File Sharing Config](assets/docker-file-sharing.jpg)
 
+5. 1.2. **[IMPORTANT]** IF you are using LINUX, please go ahead and run this command to get set UID, otherwise you will get File Persmission Error, and you will not be able to write dags.
+    - ``` bash
+            echo -e "AIRFLOW_UID=$(id -u)" > .env
+        ```
+    This command will set the user id, This is required only in Linux.
+
 ## After you have docker installed and configuration is complete:
 
 1. To store your dags, logs and plugins you need to create three directories which can be made using this command:
@@ -57,7 +63,7 @@ If you are not able run it, please do `chmod +x *.sh` this command will give exe
 
 # IMPORTANT After Installation Instructions
 
-1. If you are getting AIRFLOW_UID not set Warning, you can simply ignore it, but if you want to get rid of it, simply create a `.env` file where `docker-compose.yaml` is present and set `AIRFLOW_UID=5000`. I have provided the file by default.
+1. If you are getting AIRFLOW_UID not set Warning, you can simply ignore it, but if you want to get rid of it, simply create a `.env` file where `docker-compose.yaml` is present and set `AIRFLOW_UID=50000`. I have provided the file by default. 
 
 2. **[IMPORTANT]** Whenever next time you want to start your container, simply run the `start-airflow.sh` file which contains the start command for already created containers and will not overwrite the previous ones.
 
