@@ -10,13 +10,13 @@ This Repository contains the details and steps to install Airflow easily using d
     - For Windows make sure you are using WSL2 as backend for docker containers.
 
 3. Make sure you give docker atleast 4GB Memory so you will not get airflow less memory error.
-    ![Docker Config Image](assets/docker-resourcer-advanced.jpg)
+    ![Docker Config Linux Image](assets/docker-resourcer-advanced.jpg)
 
     You can change the location of the docker images to save space in root directory.
 
 
 4. [For Linux] Make sure at the File Sharing option you add the directory where you have docker-compose.yaml file stored.
-    ![File Sharing Config](assets/docker-file-sharing.jpg)
+    ![File Sharing Linux Config](assets/docker-file-sharing.jpg)
 
 5. 1.2. **[IMPORTANT]** IF you are using LINUX, please go ahead and run this command to get set UID, otherwise you will get File Persmission Error, and you will not be able to write dags.
     - ``` bash
@@ -44,10 +44,10 @@ This Repository contains the details and steps to install Airflow easily using d
     - After you run this script, you will see lots of output in the terminal, once that is complete and you see `database created, please run 2.create-airflow-containers-once.sh to start your airflow instance`
     - To check the output, Open Docker Desktop, you will your newly created airflow container, click on `airflow-init-1` and you will be able to see the logs. Once it has done its job and exited successfully only then proceed to next steps. 
 
+If you are not able scripts, please do `chmod +x *.sh` in terminal, this command will give execution permission to scripts.
 
 #### ONLY PROCEED TO NEXT STEPS WHEN THE airflow-init-1 is complete.
 
-If you are not able run it, please do `chmod +x *.sh` this command will give execution permission to scripts.
 
 3. After you get successful message from initialized database, run `create-airflow-containers-once.sh`
     - This command will take **some time** if you are running it for the first time as it will download and install all the required images.
