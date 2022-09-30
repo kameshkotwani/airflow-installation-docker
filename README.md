@@ -27,6 +27,8 @@ This Repository contains the details and steps to install Airflow easily using d
 ## After you have docker installed and configuration is complete:
 
 1. To store your dags, logs and plugins you need to create three directories which can be made using this command:
+
+    **(This step is optional, as the airflow-init-once.sh creates the directories on its own)**
     - ```bash 
         mkdir -p ./dags ./plugins ./logs
         ```
@@ -35,8 +37,15 @@ This Repository contains the details and steps to install Airflow easily using d
     - `plugins` directory will contain your external plugins if you have any.
     - These directories are linked to docker containers directories which are mentioned in `x-airflow-common:` service under `volumes`. You can add your own directories if you wish to.
 
-2. Run `airflow-init-once.sh`
+
+
+2. Run `1.airflow-init-once.sh`
     - Run this file only once.
+    - After you run this script, you will see lots of output in the terminal, once that is complete and you see `database created, please run 2.create-airflow-containers-once.sh to start your airflow instance`
+    - To check the output, Open Docker Desktop, you will your newly created airflow container, click on `airflow-init-1` and you will be able to see the logs. Once it has done its job and exited successfully only then proceed to next steps. 
+
+
+#### ONLY PROCEED TO NEXT STEPS WHEN THE airflow-init-1 is complete.
 
 If you are not able run it, please do `chmod +x *.sh` this command will give execution permission to scripts.
 
@@ -69,11 +78,11 @@ If you are not able run it, please do `chmod +x *.sh` this command will give exe
 
 3. If you wish to increase your airflow workers, you can do that by using the following command:
     - ``` bash
-        docker compose --profile flower --scale spark-worker=<number of workers you want> up -d
+        docker compose --profile flower --scale airflow-worker=<number of workers you want> up -d
         ```
 
     - Example if you want 3 workers and 1 master you can run the following command:
         ```bash
-        docker compose --profile flower --scale spark-worker=3 up -d
+        docker compose --profile flower --scale airflow-worker=3 up -d
         ```
-        Use this command only once, in future if you wish to increase your workers simply increase the spark-woker argument and after it is done, you can use `start-airflow.sh` file to normally start your containers. 
+        Use this command only once, in future if you wish to increase your workers simply increase the airflow-woker argument and after it is done, you can use `start-airflow.sh` file to normally start your containers. 
