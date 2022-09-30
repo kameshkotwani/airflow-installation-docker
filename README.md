@@ -78,11 +78,11 @@ If you are not able scripts, please do `chmod +x *.sh` in terminal, this command
 
 3. If you wish to increase your airflow workers, you can do that by using the following command:
     - ``` bash
-        docker compose --profile flower --scale airflow-worker=<number of workers you want> up -d
+        docker compose --profile flower  up -d --scale airflow-worker=<number of worker you want>
         ```
 
     - Example if you want 3 workers and 1 master you can run the following command:
         ```bash
-        docker compose --profile flower --scale airflow-worker=3 up -d
+        docker compose --profile flower  up -d --scale airflow-worker=3
         ```
         Use this command only once, in future if you wish to increase your workers simply increase the airflow-woker argument and after it is done, you can use `start-airflow.sh` file to normally start your containers. 
