@@ -9,7 +9,8 @@ This Repository contains the details and steps to install Airflow easily using d
 2. Make sure you are able to run Docker Engine.
     - For Windows make sure you are using WSL2 as backend for docker containers.
 
-3. Make sure you give docker atleast 4GB Memory so you will not get airflow less memory error.
+3. Make sure you give docker atleast 4GB Memory so you will not get airflow less memory error (This option is only available for Linux, since Windows uses WSL2 backend, Memory and Storage related setttings are handled by Windows).
+
     ![Docker Config Linux Image](assets/docker-resourcer-advanced.jpg)
 
     You can change the location of the docker images to save space in root directory.
